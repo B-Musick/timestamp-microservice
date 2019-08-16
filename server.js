@@ -41,7 +41,7 @@ app.get("/api/timestamp/:date_string",
 //     },
    (req,res)=>{
       let date = new Date(req.params.date_string);
-      res.send(date.toUTCString());
+      res.send(date);
       }
 //       let dateString = req.params.date_string;
 //       let splitDate = dateString.split('-');
