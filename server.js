@@ -29,18 +29,20 @@ app.get("/api/hello", function (req, res) {
     }*/
 
 app.get("/api/timestamp/:date_string",
-        res.send(date_string);
-//     (req,res,next)=>{
-//       if(new Date(req.params.date_string)){
+        
+//     (req,res)=>{
+//       if(req.params.date_string){
 //         // If the date_string makes a valid date
-//         next();
+        
 //       }
 //       else{
 //         res.json({"error":"Invalid Date"})
 //       }
 //     },
-//    (req,res)=>{
-      
+   (req,res)=>{
+      let date = new Date(req.params.date_string);
+      res.send(date.toUTCString());
+      }
 //       let dateString = req.params.date_string;
 //       let splitDate = dateString.split('-');
 //       let numDateArray = splitDate.map(val=>parseInt(val));
@@ -53,7 +55,7 @@ app.get("/api/timestamp/:date_string",
   
     
     // res.json({"unix":date.getTime(),"utc":date.toUTCString()});
-})
+)
 
 
 
