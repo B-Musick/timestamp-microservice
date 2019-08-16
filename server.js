@@ -28,17 +28,21 @@ app.get("/api/hello", function (req, res) {
       res.json({"unix":date.getTime(),"utc":date.toUTCString()})
     }*/
 
+app.get("/api/timestamp",(req,res)=>{
+  let date = new Date();
+  res.json({"unix":date.getTime(),"utc":date.toUTCString()});
+
+});
+
 app.get("/api/timestamp/:date_string",
     (req,res)=>{
-    // let date = new Date(req.params.date_string);
-    // res.send(!date.getTime())
     
-    let date;
+      let date;
       if((new Date(req.params.date_string)).getTime()){
         // If the date_string makes a valid date
         date = new Date(req.params.date_string);
         res.json({"unix":date.getTime(),"utc":date.toUTCString()});
-      }else if(!(new Date(parseInt(req.params.date_string)))){
+      }else if((new Date(parseInt(req.params.date_string)))){
          date = new Date(parseInt(req.params.date_string));
          res.json({"unix":date.getTime(),"utc":date.toUTCString()});
       }
