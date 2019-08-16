@@ -23,15 +23,22 @@ app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
      
-
+// res.send(new Date(parseInt(req.params.date_string)))
 app.get("/api/timestamp/:date_string",(req,res,next)=>{
     if(new Date(req.params.date_string)){
       // If the date_string makes a valid date
       next();
-    }else if(re)
+    }else if(new Date(parseInt(req.params.date_string))){
+      let date = new Date(parsereq.params.date_string);
+      res.json({"unix":date.getTime(),"utc":date.toUTCString()})
+             }
+    else{
+      res.json({"error":"Invalid Date"})
+    }
   },
    (req,res)=>{
-  
+    let date = new Date(req.params.date_string);
+    res.json({"unix":date.getTime(),"utc":date.toUTCString()})
   res.send(new Date(req.params.date_string));
 })
 
