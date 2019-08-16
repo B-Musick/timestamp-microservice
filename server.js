@@ -18,15 +18,21 @@ app.get("/", function (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
-
 // your first API endpoint... 
 app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
+     
 
-app.get("/api/timestamp/:date_string",(req,res)=>{
+app.get("/api/timestamp/:date_string",(req,res,next)=>{
+    if(new Date(req.params.date_string)){
+      // If the date_string makes a valid date
+      next();
+    }else if(re)
+  },
+   (req,res)=>{
   
-  res.send(req.params.date_string);
+  res.send(new Date(req.params.date_string));
 })
 
 
