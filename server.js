@@ -29,26 +29,37 @@ app.get("/api/hello", function (req, res) {
     }*/
 
 app.get("/api/timestamp/:date_string",
-    (req,res,next)=>{
-      if(new Date(req.params.date_string)|| new Date(parseInt(req.params.date_string))){
-        // If the date_string makes a valid date
-        next();
-      }
-      else{
-        res.json({"error":"Invalid Date"})
-      }
-    },
+    // (req,res,next)=>{
+    //   if(new Date(req.params.date_string)|| new Date(parseInt(req.params.date_string))){
+    //     // If the date_string makes a valid date
+    //     next();
+    //   }
+    //   else{
+    //     res.json({"error":"Invalid Date"})
+    //   }
+    // },
    (req,res)=>{
-    let date;
-    if(new Date(parseInt(req.params.date_string))){
-       date = new Date(parseInt(req.params.date_string));
-    }else{
-      date = new Date(req.params.date_string);
-    }
+      
+      let dateString = req.params.date_string;
+      let splitDate = dateString.split('-');
+      let numDateArray = splitDate.map(val=>parseInt(val));
+      res.send(newnumDateArray)
+    // let date;
+//     if(new Date(parseInt(req.params.date_string))){
+      
+//        date = new Date(parseInt(req.params.date_string));
+//     }else{
+      // let splitDate = (req.params.date_string).split('-');
+      // console.log(splitDate)
+      // let newDate = splitDate.map(val=>parseInt(val));
+      // console.log(newDate)
+      // let joinDate = splitDate(',');
+      // date = new Date(newDate);
+    // }
   // let date = new Date(parseInt(req.params.date_string));
   // res.send(typeof date)
     
-    res.json({"unix":date.getTime(),"utc":date.toUTCString()});
+    // res.json({"unix":date.getTime(),"utc":date.toUTCString()});
 })
 
 
