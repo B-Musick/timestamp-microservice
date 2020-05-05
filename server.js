@@ -30,12 +30,16 @@ app.get("/api/timestamp",(req,res)=>{
 app.get("/api/timestamp/:date_string",
     (req,res)=>{
       let date;
-      if((new Date(req.params.date_string)).getTime()){
+      // This should be false for both
+      let noletters = /[a-z]/.test(req.params.date_string);
+
+      if((new Date(req.params.date_string)).getTime() && !noletters){
         // If the date_string makes a valid date
         date = new Date(req.params.date_string);
         res.json({"unix":date.getTime(),"utc":date.toUTCString()});
-      }else if((new Date(parseInt(req.params.date_string)))){
+      } else if ((new Date(parseInt(req.params.date_string)) && !noletters)){
         // If it is an integer passed
+        console.log(parseInt(req.params.date_string))
          date = new Date(parseInt(req.params.date_string));
          res.json({"unix":date.getTime(),"utc":date.toUTCString()});
       }
@@ -45,6 +49,6 @@ app.get("/api/timestamp/:date_string",
 )
 
 // listen for requests 
-var listener = app.listen(process.env.PORT, ()=> {
+var listener = app.listen(3000, ()=> {
   console.log('Your app is listening on port ' + listener.address().port);
 });
