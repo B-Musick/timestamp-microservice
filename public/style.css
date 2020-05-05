@@ -7,45 +7,51 @@ body {
 	background-color: #FaFaFa;
 	text-align: center;
 	line-height: 1.4em;
+	height:100vh;
+	width:100vw;
+	margin: 0;
+	padding: 0;
 }
 
 .container {
 	padding: 0;
-	margin-top: 40px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	height:80%
 }
 
-h3 {
-  margin-top: 30px;
+#project-information-container{
+	flex:1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 20px;
+	padding: 20px;
+	border: 1px solid navy;
 }
+#project-example-container{
+	flex:1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	margin: 20px;
+	padding: 20px;
+	border: 1px solid navy;
 
+
+}
 .footer {
+	height: 20%;
 	margin-top: 40px;
 }
 
-.user-stories {
-  position: relative;
-  text-align: justify;
-  max-width: 700px;
-  margin: 15px auto;
-}
 code {
   font-family: monospace;
   padding: 2px;
   color: black;
   background-color: #fff;
-}
-ol {
-	list-style-position: outside;
-}
-ul {
-	list-style-type: none;
-}
-
-li {
-  margin-bottom: 0.5em;
-}
-.user-stories li {
-  margin-bottom: 1em;
 }
 
 a {
